@@ -8,15 +8,17 @@
   "private": true,
   "husky": {
     "hooks": {
-      "pre-commit": "commitlint -E HUSKY_GIT_PARAMS && lerna lint",
-      "pre-test": "lerna test"
+      "pre-commit": "lerna run lint",
+      "pre-test": "lerna run test"
     }
   },
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "postinstall": "husky-run install"
+    "dev": "lerna run --parallel start:dev",
+    "postinstall": "husky-run install",
+    "test": "snyk test"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
