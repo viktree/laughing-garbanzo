@@ -8,7 +8,7 @@
   "private": true,
   "husky": {
     "hooks": {
-      "pre-commit": "[ ! -e .nvmrc ] && node -v  > .nvmrc || : && git add .nvmrc && lerna lint",
+      "pre-commit": "commitlint -E HUSKY_GIT_PARAMS && lerna lint",
       "pre-test": "lerna test"
     }
   },
@@ -16,6 +16,7 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@commitlint/config-conventional": "^11.0.0",
     "husky": "^4.3.8",
     "lerna": "^3.22.1",
     "pretty-quick": "^3.1.0",
