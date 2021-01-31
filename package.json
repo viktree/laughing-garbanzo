@@ -15,6 +15,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "postinstall": "husky-run install"
+  },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
     "husky": "^4.3.8",
