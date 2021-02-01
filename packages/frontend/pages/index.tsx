@@ -1,18 +1,18 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import * as React from 'react';
+import { get } from 'lodash';
+import { getDataFromTree } from '@apollo/client/react/ssr';
+import App from 'components/App';
+import { useMeQuery } from 'generated';
+import LoggedOutHome from 'containers/LoggedOutHome';
+import withApollo from 'lib/withApollo';
 
-const IndexPage = () => {
-  console.log("Made it here!")
+const Home = () => {
+  const { data } = useMeQuery();
+  const me = get(data, 'me', null);
+
   return (
-    <Layout title="Home | Next.js + TypeScript Example">
-      <h1>Hello Next.js 👋</h1>
-      <p>
-        <Link href="/about">
-          <a>About</a>
-        </Link>
-      </p>
-    </Layout>
-  )
-}
+    <App description="">{me ? `Welcome ${me.name}` : <LoggedOutHome />}</App>
+  );
+};
 
-export default IndexPage
+export default withApollo(Home, { getDataFromTree });

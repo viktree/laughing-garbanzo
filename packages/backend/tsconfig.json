@@ -3,13 +3,27 @@
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
+    "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es2017",
+    "target": "esnext",
+    "lib": ["esnext"],
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
-    "incremental": true
-  }
+    "incremental": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@user/*": ["src/user/*"],
+      "@chat/*": ["src/chat/*"],
+      "@post/*": ["src/post/*"],
+      "@auth/*": ["src/auth/*"],
+      "@types": ["src/types/types"],
+      "@enums": ["src/types/enums"],
+      "@secrets": ["src/config/secrets"],
+      "@constants": ["src/config/constants"],
+      "@providers": ["src/config/providers"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
 }
